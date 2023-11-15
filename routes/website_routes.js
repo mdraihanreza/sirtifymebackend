@@ -461,8 +461,8 @@ module.exports = function (app, express) {
 	});
 	router.get('/viewTransactionDetails', function (req, res) {
 		let authData = req.authDet;
-		let user_id = req.query.user_id;
-		websiteService.viewTransactionDetails(authData, user_id, function (response) {
+		// let user_id = req.query.user_id;
+		websiteService.viewTransactionDetails(authData, function (response) {
 			res.send(response);
 		});
 	});
