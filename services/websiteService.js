@@ -2582,7 +2582,7 @@ let websiteService = {
 		}		
 	},
 	viewTransactionDetails: async function (authData, callback) {
-		var transaction_data = await Transaction.find({ "transaction_user_id":authData.id }).exec();
+		var transaction_data = await Transaction.find({ "transaction_user_id":authData.user_id }).exec();
 		if(transaction_data.length > 0)
 		{
 			callback({ success: true, message: 'Transaction History fetched', data: transaction_data });
