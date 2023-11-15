@@ -2581,6 +2581,17 @@ let websiteService = {
 			callback({ success: false, message: "No data found" });
 		}		
 	},
+	viewTransactionDetails: async function (authData, callback) {
+		var transaction_data = await Transaction.find({ "transaction_user_id":authData.id }).exec();
+		if(transaction_data.length > 0)
+		{
+			callback({ success: true, message: 'Transaction History fetched', data: transaction_data });
+		}
+		else
+		{
+			callback({ success: false, message: 'No data found' });
+		}
+	},
 	deleteConnection: async function (authData, connection_id, callback) {
     if(!connection_id) {
         callback({ success: false, message: "Connection id required" });

@@ -459,7 +459,13 @@ module.exports = function (app, express) {
 			res.send(response);
 		});
 	});
-	
+	router.get('/viewTransactionDetails', function (req, res) {
+		let authData = req.authDet;
+		let user_id = req.query.user_id;
+		websiteService.viewTransactionDetails(authData, user_id, function (response) {
+			res.send(response);
+		});
+	});
 	router.get('/deleteSubUser', function (req, res) {
 		let authData = req.authData;
 		let sub_user_id = req.query.sub_user_id;
