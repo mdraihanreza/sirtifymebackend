@@ -1847,7 +1847,7 @@ let websiteService = {
 		var about_data = await CMS.findOne({}).exec();
 		if(about_data)
 		{
-			callback({ success: true, message: "about data fetched", data: about_data });
+			callback({ success: true, message: "about data fetched", data: 'yyggjygjgyj' });
 		}
 		else
 		{
