@@ -34,6 +34,7 @@ const subscriptionEmailSendTask = cron.schedule('0 */2 * * * * ', async () => {
 
                 console.log("cron start");
 
+                try{
                 // ============= cron_logs check email send or not ======= //
                 var cron_data = await cron_logs.find({
                     "user_id": item.subscription_user_id,
@@ -71,6 +72,10 @@ const subscriptionEmailSendTask = cron.schedule('0 */2 * * * * ', async () => {
                         }
                     });
                 }
+            }catch(err){
+                console.log("cron error ");
+                console.log(err);
+            }
 
 
             }
