@@ -813,7 +813,7 @@ let adminService = {
     }
 },
 PaymentHistory: async function (authData,non_provider_id, callback) {
-    var payment_details = await Transaction.find({ "non_provider_id":non_provider_id }).exec();
+    var payment_details = await Transaction.find({ "transaction_user_id":non_provider_id }).exec();
     if(payment_details.length > 0)
     {
        
