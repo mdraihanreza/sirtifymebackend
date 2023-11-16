@@ -41,7 +41,8 @@ const subscriptionEmailSendTask = cron.schedule('0 */2 * * * * ', async () => {
                     "doc": moment().format("DD-MM-YY")
                 }).exec();
 
-                console.log("cron_logs " + cron_data);
+                console.log("cron_logs ");
+                console.log(cron_data);
 
                 if (cron_data.length === 0) {
 
