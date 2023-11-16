@@ -157,7 +157,7 @@ global.sendToClient=(client_id, send_type, data)=>{
 
 
 // ======== cron task run =========== //
-// subscriptionEmailSendTask.start();
+subscriptionEmailSendTask.start();
 
 
 
