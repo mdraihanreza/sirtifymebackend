@@ -38,10 +38,10 @@ const subscriptionEmailSendTask = cron.schedule('0 */2 * * * * ', async () => {
                 var cron_data = await cron_logs.find({
                     "user_id": item.subscription_user_id,
                     "email_send_status": "1",
-                    // "doc": moment().format("DD-MM/YY")
+                    "doc": moment().format("DD-MM-YY")
                 }).exec();
 
-                console.log("cron_logs "+ cron_data);
+                console.log("cron_logs " + cron_data);
 
                 if (cron_data.length === 0) {
 
