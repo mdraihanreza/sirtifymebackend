@@ -28,6 +28,7 @@ let staging_siteurl = 'https://sirtifymebackend.elvirainfotech.org/';
 let notificationPage = require('../helper/notification');
 var generalHelper = require('../helper/general_helper');
 const User = require('../model/user');
+const Transaction = require('../model/transaction');
 const UserLicense = require('../model/user_license');
 const UserAdditonalLicense = require('../model/user_additional_license');
 const UserCertificate = require('../model/user_certificate');
