@@ -64,6 +64,7 @@ const subscriptionEmailSendTask = cron.schedule('0 */2 * * * * ', async () => {
                                 const cornData = new cron_logs({
                                     user_id: item.subscription_user_id,
                                     email_send_status: "1",
+                                    doc:moment().format("YYYY-MM-DD")
                                 });
 
                                 cornData.save();
