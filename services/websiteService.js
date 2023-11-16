@@ -241,7 +241,7 @@ let websiteService = {
 			.then((customer) => {
 
 				return stripe.charges.create({
-					amount: userData.amount,	 // Charging Rs 25
+					amount: userData.amount * 100,	 // Charging Rs 25
 					description: 'subscription',
 					currency: 'USD',
 					customer: customer.id
