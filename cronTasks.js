@@ -50,7 +50,7 @@ const subscriptionEmailSendTask = cron.schedule('0 */2 * * * * ', async () => {
                         var userData = await user.findOne({ '_id': item.subscription_user_id }).exec();
 
                         let mailDetails = {
-                            from: "jagan@elvirainfotech.com",
+                            from: "Sirtifyme :<jagan@elvirainfotech.com>",
                             to: userData.email,
                             subject: "Subscription Expired Reminder",
                             html: `<table><tr><td>Your Subscription will Expired within 3 days.</td></tr></table>`,
