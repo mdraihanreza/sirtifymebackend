@@ -34,48 +34,48 @@ const subscriptionEmailSendTask = cron.schedule('0 */2 * * * * ', async () => {
 
                 console.log("cron start");
 
-                try{
-                // ============= cron_logs check email send or not ======= //
-                var cron_data = await cron_logs.find({
-                    "user_id": item.subscription_user_id,
-                    "email_send_status": "1",
-                    "doc": moment().format("DD-MM-YY")
-                }).exec();
+                try {
+                    // ============= cron_logs check email send or not ======= //
+                    var cron_data = await cron_logs.find({
+                        "user_id": item.subscription_user_id,
+                        "email_send_status": "1",
+                        "doc": moment().format("YYYY-MM-DD")
+                    }).exec();
 
-                console.log("cron_logs ");
-                console.log(cron_data);
+                    console.log("cron_logs ");
+                    console.log(cron_data);
 
-                if (cron_data.length === 0) {
+                    if (cron_data.length === 0) {
 
-                    var userData = await user.findOne({ '_id': item.subscription_user_id }).exec();
+                        var userData = await user.findOne({ '_id': item.subscription_user_id }).exec();
 
-                    let mailDetails = {
-                        from: "jagan@elvirainfotech.com",
-                        to: userData.email,
-                        subject: "Subscription Expired Reminder",
-                        html: `<table><tr><td>Your Subscription will Expired within 3 days.</td></tr></table>`,
-                    };
+                        let mailDetails = {
+                            from: "jagan@elvirainfotech.com",
+                            to: userData.email,
+                            subject: "Subscription Expired Reminder",
+                            html: `<table><tr><td>Your Subscription will Expired within 3 days.</td></tr></table>`,
+                        };
 
-                    mail.sendMail(mailDetails, function (error, info) {
-                        if (error) {
-                            console.error(error);
-                        } else {
+                        mail.sendMail(mailDetails, function (error, info) {
+                            if (error) {
+                                console.error(error);
+                            } else {
 
-                            const cornData = new cron_logs({
-                                user_id: item.subscription_user_id,
-                                email_send_status: "1",
-                            });
+                                const cornData = new cron_logs({
+                                    user_id: item.subscription_user_id,
+                                    email_send_status: "1",
+                                });
 
-                            cornData.save();
+                                cornData.save();
 
-                            console.log("Email sent: " + userData.email);
-                        }
-                    });
+                                console.log("Email sent: " + userData.email);
+                            }
+                        });
+                    }
+                } catch (err) {
+                    console.log("cron error ");
+                    console.log(err);
                 }
-            }catch(err){
-                console.log("cron error ");
-                console.log(err);
-            }
 
 
             }
