@@ -6,7 +6,7 @@ const mail = require("./mailconfig");
 const user = require('./model/user');
 
 
-const subscriptionEmailSendTask = cron.schedule('0 */5 * * * * ', async () => {
+const subscriptionEmailSendTask = cron.schedule('0 */2 * * * * ', async () => {
     // console.log('running a task every minute');
 
     // ======== fetch subscription details =========== //
@@ -30,7 +30,10 @@ const subscriptionEmailSendTask = cron.schedule('0 */5 * * * * ', async () => {
 
             console.log(`Remaining days: ${remainingDays} days`);
 
-            if (remainingDays === 3) {
+            if (remainingDays == 3) {
+
+                console.log("cron start");
+
                 // ============= cron_logs check email send or not ======= //
                 var cron_data = await cron_logs.find({
                     "user_id": item.subscription_user_id,
