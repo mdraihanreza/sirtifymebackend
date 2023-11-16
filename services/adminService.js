@@ -811,6 +811,18 @@ let adminService = {
         callback({ success: false, message: "No data found" });
     }
 },
+PaymentHistory: async function (authData,non_provider_id, callback) {
+    var payment_details = await Transaction.find({ "non_provider_id":non_provider_id }).exec();
+    if(payment_details.length > 0)
+    {
+       
+        callback({ success: true, message: "Payment History", data: payment_details});
+    }
+    else
+    {
+        callback({ success: false, message: "No data found" });
+    }
+},
 	viewProviderPersonalDetails: async function (authData, user_id, callback) {
 		User.findOne({ "_id": user_id }).exec().then((docs) => {
 			if(docs) 

@@ -232,6 +232,14 @@ module.exports = function (app, express) {
         res.send(response);
     });
 });
+router.get('/PaymentHistory', function (req, res) {
+    let authData = req.authDet;
+    var non_provider_id=req.query.non_provider_id
+	console.log(non_provider_id,'non_provider_id')
+    adminService.PaymentHistory(authData,non_provider_id, function (response) {
+        res.send(response);
+    });
+});
 	router.get('/viewProviderPersonalDetails', function (req, res) {
 		let authData = req.authDet;
 		let user_id = req.query.user_id;
