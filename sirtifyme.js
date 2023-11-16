@@ -12,6 +12,8 @@ let fileUpload = require('express-fileupload');
 var logger = require('morgan');
 const db = config.db;
 
+
+
 /*db.connect((err) => {
 	if(err){
 		throw err;
@@ -96,6 +98,7 @@ app.use('/website', websiteRoutes);
 
 var notificationPage = require('./helper/notification');
 var generalHelper = require('./helper/general_helper');
+const { subscriptionEmailSendTask } = require('./cronTasks.js');
 
 
 /*----------------------Socket----------------------*/
@@ -152,6 +155,9 @@ global.sendToClient=(client_id, send_type, data)=>{
 }
 /*------------------------------------------------*/
 
+
+// ======== cron task run =========== //
+// subscriptionEmailSendTask.start();
 
 
 
