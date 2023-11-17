@@ -296,7 +296,8 @@ let websiteService = {
 					user_data.save();
 				}
 				else {
-					var u_doc = await Subscription.findByIdAndDelete({ "subscription_user_id": userData.subscription_user_id, "sub_user_type":"0"}).exec();
+					var u_doc = await Subscription.deleteOne({ "subscription_user_id": userData.subscription_user_id, "sub_user_type":"0" }).exec();
+					// var u_doc = await Subscription.findByIdAndDelete({ "subscription_user_id": userData.subscription_user_id, "sub_user_type":"0"}).exec();
 					console.log(u_doc,'u_doc')
 					if (u_doc) {
 						const subscription_data = new Subscription({
