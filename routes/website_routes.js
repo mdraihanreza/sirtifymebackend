@@ -466,6 +466,13 @@ module.exports = function (app, express) {
 			res.send(response);
 		});
 	});
+	router.get('/viewSubscriptionDetails', function (req, res) {
+		let authData = req.authDet;
+		// let user_id = req.query.user_id;
+		websiteService.viewSubscriptionDetails(authData, function (response) {
+			res.send(response);
+		});
+	});
 	router.get('/deleteSubUser', function (req, res) {
 		let authData = req.authData;
 		let sub_user_id = req.query.sub_user_id;

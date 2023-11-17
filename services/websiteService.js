@@ -2538,6 +2538,15 @@ let websiteService = {
 			callback({ success: false, message: 'No data found' });
 		}
 	},
+	viewSubscriptionDetails: async function (authData, callback) {
+		var subscription_data = await Subscription.find({ "subscription_user_id": authData.id,"sub_user_type":"1" }).exec();
+		if (subscription_data.length > 0) {
+			callback({ success: true, message: 'subscription data fetched', data: subscription_data });
+		}
+		else {
+			callback({ success: false, message: 'No data found' });
+		}
+	},
 	deleteConnection: async function (authData, connection_id, callback) {
 		if (!connection_id) {
 			callback({ success: false, message: "Connection id required" });
