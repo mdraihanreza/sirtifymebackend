@@ -248,7 +248,8 @@ let websiteService = {
 				});
 			})
 			.then(async (charge) => {
-               console.log(charge,'charge')
+            //    console.log(charge,'charge')
+			   if (charge.status === 'succeeded') {
 				const transaction_data = new Transaction({
 					transaction_user_id: userData.transaction_user_id,
 					user_type: userData.user_type,
@@ -315,11 +316,15 @@ let websiteService = {
 					}
 				}
 
-				return;
+				
+					callback({ success: true, message: 'Payment successfully' });
+				} else {
+					callback({ success: false, message: 'Payment failed' });
+				}
 			})
-			.then(() => {
-				callback({ success: true, message: 'Payment successfully' });
-			})
+			// .then(() => {
+			// 	callback({ success: true, message: 'Payment successfully' });
+			// })
 			.catch((err) => {
 				console.log(err);
 				//res.status(500).send({ error: err.message });
