@@ -248,7 +248,7 @@ let websiteService = {
 				});
 			})
 			.then(async (charge) => {
-            //    console.log(charge,'charge')
+               console.log(charge,'charge')
 			   if (charge.status === 'succeeded') {
 				const transaction_data = new Transaction({
 					transaction_user_id: userData.transaction_user_id,
