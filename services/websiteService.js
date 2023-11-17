@@ -248,7 +248,7 @@ let websiteService = {
 				});
 			})
 			.then(async (charge) => {
-
+               console.log(charge,'charge')
 				const transaction_data = new Transaction({
 					transaction_user_id: userData.transaction_user_id,
 					user_type: userData.user_type,
