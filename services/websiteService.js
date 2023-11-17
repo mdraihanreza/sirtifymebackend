@@ -297,8 +297,9 @@ let websiteService = {
 				}
 				else {
 					var u_doc = await Subscription.findOne({ "subscription_user_id": userData.subscription_user_id, "user_type": userData.user_type }).exec();
+					console.log(u_doc,'u_doc')
 					if (u_doc) {
-					var updatedata=	await Subscription.updateOne({ "subscription_user_id": userData.subscription_user_id,"sub_user_type":"0" }, {
+						var updatedata=	await Subscription.updateOne({ "subscription_user_id": userData.subscription_user_id,"sub_user_type":"0" }, {
 							"subscription_start_date": Date.now()
 						}).exec();
                   console.log(updatedata,'updatedata')
