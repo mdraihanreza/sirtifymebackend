@@ -312,7 +312,7 @@ let websiteService = {
 						// var updatedata=	await Subscription.updateOne({ "subscription_user_id": userData.subscription_user_id,"sub_user_type":"0" }, {
 						// 	"subscription_amount":userData.subscription_amount,"subscription_status":1,"subscription_duration":userData.subscription_duration,"email":userData.email,"subscription_user_id":userData.subscription_user_id,"subscription_start_date": Date.now()
 						// }).exec();
-                  console.log(updatedata,'updatedata')
+            
 					} else {
 
 						const subscription_data = new Subscription({
