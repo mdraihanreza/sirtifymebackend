@@ -327,7 +327,7 @@ let websiteService = {
 			});
 	},
 	getPaymentDetails: async function (authData, callback) {
-		var payment_data = await Subscription.findOne({ "subscription_user_id": authData.id }).exec();
+		var payment_data = await Subscription.findOne({ "subscription_user_id": authData.id,"sub_user_type":"0" }).exec();
 		if (payment_data) {
 			console.log(payment_data, 'payment_data')
 			const currentDate = new Date();
@@ -2539,7 +2539,7 @@ let websiteService = {
 		}
 	},
 	viewSubscriptionDetails: async function (authData, callback) {
-		var subscription_data = await Subscription.find({ "subscription_user_id": authData.id,"sub_user_type":"1" }).exec();
+		var subscription_data = await Subscription.find({ "subscription_user_id": authData.id,"sub_user_type":"0" }).exec();
 		if (subscription_data.length > 0) {
 			callback({ success: true, message: 'subscription data fetched', data: subscription_data });
 		}
