@@ -298,8 +298,8 @@ let websiteService = {
 				else {
 					var u_doc = await Subscription.findOne({ "subscription_user_id": userData.subscription_user_id, "user_type": userData.user_type }).exec();
 					if (u_doc) {
-						Subscription.updateOne({ "subscription_user_id": userData.subscription_user_id }, {
-							"subscription_amount": userData.subscription_amount
+						Subscription.updateOne({ "subscription_user_id": userData.subscription_user_id,"subscription_status":"1" }, {
+							"subscription_start_date": Date.now()
 						}).exec();
 
 					} else {
